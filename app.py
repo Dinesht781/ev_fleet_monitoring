@@ -483,9 +483,9 @@ def home():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000)) 
     with app.app_context():  # Make sure the app context is available for database queries
         db.create_all()  # Create database tables
         # create_random_users()  # Add 50 random users
         # export_users_to_csv()  # Export users to CSV
-app.run(debug=True)
+    app.run(host="0.0.0.0", port=port,debug=True)
