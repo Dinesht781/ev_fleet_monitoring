@@ -10,6 +10,7 @@ import random
 import pickle
 import pandas as pd
 import numpy as np 
+import os
 
 
 app = Flask(__name__)
@@ -482,6 +483,7 @@ def home():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
     with app.app_context():  # Make sure the app context is available for database queries
         db.create_all()  # Create database tables
         # create_random_users()  # Add 50 random users
