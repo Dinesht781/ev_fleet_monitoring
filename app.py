@@ -11,8 +11,8 @@ import pickle
 import pandas as pd
 import numpy as np 
 import os
-
 from dotenv import load_dotenv
+
 load_dotenv()  # Load environment variables from .env file
 brevo_api_key = os.environ.get("BREVO_API_KEY")
 app = Flask(__name__)
@@ -90,47 +90,11 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField('Confirm New Password', validators=[DataRequired(), EqualTo('new_password')])
     submit = SubmitField('Reset Password')
 
-# Function to generate random users
-# def create_random_users():
-#     # Sample lists of common first and last names (you can add more names for variety)
-#     first_names = ["John", "Jane", "Alex", "Michael", "Emily", "Sarah", "David", "Samantha", "Daniel", "Laura", "James", "Rachel", "Robert", "Jessica", "William", "Olivia", "Chris", "Sophia", "Matthew", "Ashley"]
-#     last_names = ["Doe", "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Perez", "Taylor", "Anderson", "Thomas", "Jackson"]
-    
-#     # Create 25 Fleet Managers and 25 Drivers
-#     for i in range(1, 51):
-#         # Select random first and last names
-#         first_name = random.choice(first_names)
-#         last_name = random.choice(last_names)
-
-#         # Generate a username by combining first and last name (e.g., 'John Doe')
-#         username = first_name + " " + last_name
-
-#         # Generate email (remove spaces and append number)
-#         email = username.replace(" ", "").lower() + str(i) + "@gmail.com"
-
-#         # Password is lowercase username (e.g., johndoe)
-#         password = username.lower()
-
-#         # Randomly assign a role ('fleet_manager' or 'driver')
-#         role = random.choice(['fleet_manager', 'driver'])
-
-#         # Check if a user with this email already exists
-#         existing_user = User.query.filter_by(email=email).first()
-#         if not existing_user:  # Avoid duplicates
-#             new_user = User(
-#                 email=email,
-#                 password=generate_password_hash(password, method='sha256'),
-#                 role=role,  # Assign randomly chosen role
-#                 username=username
-#             )
-#             db.session.add(new_user)
-            
-#     db.session.commit()
-#     print("50 random users (25 Fleet Managers and 25 Drivers) have been added to the database.")
-
-# Function to send email using Sendinblue
 def send_email(to_email, subject, content):
     url = "https://api.sendinblue.com/v3/smtp/email"
+    if not brevo_api_key:
+        raise ValueError("Sendinblue API key not found in environment variables.")
+   
     headers = {
         "accept": "application/json",
         "content-type": "application/json",

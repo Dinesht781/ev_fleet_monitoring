@@ -482,7 +482,7 @@
         <h2>Relationship Between Variables</h2>
 
         <div class="parameter-selection">
-          <label for="xAxis">X-axis Parameter:</label>
+          <label for="xAxis"><strong>X-axis Parameter:</strong></label>
           <select id="xAxis" onchange="updateChart()">
             <option value="" disabled selected>Select X-axis Parameter</option>
             <option value="Top Speed">Top Speed</option>
@@ -497,7 +497,7 @@
             <option value="Total Torque">Total Torque</option>
           </select>
           <br />
-          <label for="yAxis">Y-axis Parameter:</label>
+          <label for="yAxis"><strong>Y-axis Parameter:</strong></label>
           <select id="yAxis" onchange="updateChart()">
             <option value="" disabled selected>Select Y-axis Parameter</option>
             <option value="Top Speed">Top Speed</option>
@@ -572,7 +572,7 @@
         <h2>Status Count</h2>
 
         <div class="parameter-selection">
-          <label for="statusType">Status Type:</label>
+          <label for="statusType"><strong>Status Type:</strong></label>
           <select id="statusType" onchange="updateStatusChart()">
             <option value="" disabled selected>Select Status Type</option>
             <option value="working">Working Condition</option>
@@ -652,7 +652,9 @@
 
         <!-- Dropdown for selecting maintenance type -->
         <div class="parameter-selection">
-          <label for="maintenanceOption">Maintenance View:</label>
+          <label for="maintenanceOption"
+            ><strong>Maintenance View:</strong></label
+          >
           <select id="maintenanceOption" onchange="updateMaintenanceChart()">
             <option value="" disabled selected>Select Maintenance View</option>
             <option value="costByManufacturer">
@@ -777,7 +779,7 @@
             <label
               for="batteryLevel"
               style="margin-bottom: -10px; display: block"
-              >Battery Level (%):</label
+              ><strong>Battery Level (%):</strong></label
             ><br />
             <input
               type="number"
@@ -798,7 +800,7 @@
           </div>
 
           <div class="parameter-selection">
-            <label for="carModel">Car Model:</label>
+            <label for="carModel"><strong>Car Model:</strong></label>
             <select id="carModel" name="carModel" required>
               <option value="" disabled selected>Select a car model</option>
               <option value="1">Tesla1</option>
@@ -808,7 +810,7 @@
               <option value="5">Polestar</option>
             </select>
           </div>
-
+          <br />
           <button type="submit" id="predictButton">Predict Range</button>
         </form>
 
