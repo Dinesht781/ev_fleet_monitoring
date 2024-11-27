@@ -12,7 +12,9 @@ import pandas as pd
 import numpy as np 
 import os
 
-
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
+brevo_api_key = os.environ.get("BREVO_API_KEY")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users1.db'
@@ -132,10 +134,10 @@ def send_email(to_email, subject, content):
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "api-key": "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"  # Replace with your Sendinblue API key
+        "api-key": brevo_api_key  # Replace with your Sendinblue API key
     }
     data = {
-        "sender": {"email": "sahanats4@gmail.com"},  # Replace with your sender email
+        "sender": {"email": "dineshtippavarjula@gmail.com"},  # Replace with your sender email
         "to": [{"email": to_email}],
         "subject": subject,
         "textContent": content
